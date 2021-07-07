@@ -326,6 +326,7 @@ bool SerialFlashChip::ready()
 #define ID0_SPANSION	0x01
 #define ID0_MICRON	0x20
 #define ID0_MACRONIX	0xC2
+#define ID0_MACRONIX2	0xE1
 #define ID0_SST		0xBF
 #define ID0_ADESTO      0x1F
 
@@ -453,7 +454,9 @@ uint32_t SerialFlashChip::capacity(const uint8_t *id)
 {
 	uint32_t n = 1048576; // unknown chips, default to 1 MByte
 
-	if (id[0] == ID0_ADESTO && id[1] == 0x89) {
+	if (id[0] == ID0_MACRONIX2 && id[1] == 0x10) {
+		n = 1048576*128; //128MB
+	} elseif (id[0] == ID0_ADESTO && id[1] == 0x89) {
 		n = 1048576*16; //16MB
 	} else
 	if (id[2] >= 16 && id[2] <= 31) {
