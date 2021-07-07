@@ -22,6 +22,7 @@ These chips have been tested with SerialFlash:
     Spansion S25FL127S
     Spansion S25FL256S
     Spansion S25FL512S
+    Macronix MX25L12835F
 
 SerialFlash automatically detects SPI Flash chip type and capacity to automatically handle differences between supported chips.
 
